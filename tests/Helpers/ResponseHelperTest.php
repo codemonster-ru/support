@@ -33,4 +33,36 @@ class ResponseHelperTest extends TestCase
         $this->assertJson($res->getContent());
         $this->assertJsonStringEqualsJsonString('{"ok":true}', $res->getContent());
     }
+
+    public function testAbortThrowsHttpLikeException()
+    {
+        $this->expectException(\RuntimeException::class);
+
+        try {
+            abort(403, 'Forbidden');
+        } catch (\Throwable $e) {
+            /** @var \Codemonster\Support\Contracts\HttpStatusExceptionInterface $e */
+
+            $this->assertSame(403, $e->getStatusCode());
+            $this->assertSame('Forbidden', $e->getMessage());
+
+            throw $e;
+        }
+    }
+
+    public function testAbortGeneratesDefaultMessage()
+    {
+        $this->expectException(\RuntimeException::class);
+
+        try {
+            abort(404);
+        } catch (\Throwable $e) {
+            /** @var \Codemonster\Support\Contracts\HttpStatusExceptionInterface $e */
+
+            $this->assertSame('HTTP 404', $e->getMessage());
+            $this->assertSame(404, $e->getStatusCode());
+
+            throw $e;
+        }
+    }
 }

@@ -24,3 +24,26 @@ if (!function_exists('json')) {
         return Response::json($data, $status, $headers);
     }
 }
+
+if (!function_exists('abort')) {
+    function abort(int $status, string $message = '')
+    {
+        throw new class($message ?: "HTTP {$status}", $status)
+        extends \RuntimeException
+        implements \Codemonster\Support\Contracts\HttpStatusExceptionInterface
+        {
+            protected int $statusCode;
+
+            public function __construct(string $message, int $status)
+            {
+                $this->statusCode = $status;
+                parent::__construct($message, $status);
+            }
+
+            public function getStatusCode(): int
+            {
+                return $this->statusCode;
+            }
+        };
+    }
+}

@@ -15,17 +15,18 @@ composer require codemonster-ru/support
 
 ## 🧩 Provided Helpers
 
-| Function               | Description                          |
-| ---------------------- | ------------------------------------ |
-| `config()`             | Get or set configuration values      |
-| `env()`                | Read environment variables           |
-| `view()` / `render()`  | Render or return a view instance     |
-| `router()` / `route()` | Access router instance               |
-| `request()`            | Get the current HTTP request         |
-| `response()`           | Create a new HTTP response           |
-| `json()`               | Return a JSON response               |
-| `session()`            | Read, write, or access session store |
-| `dump()` / `dd()`      | Debugging utilities (print and exit) |
+| Function               | Description                                   |
+| ---------------------- | --------------------------------------------- |
+| `config()`             | Get or set configuration values               |
+| `env()`                | Read environment variables                    |
+| `view()` / `render()`  | Render or return a view instance              |
+| `router()` / `route()` | Access router instance                        |
+| `request()`            | Get the current HTTP request                  |
+| `response()`           | Create a new HTTP response                    |
+| `json()`               | Return a JSON response                        |
+| `abort()`              | Throw an HTTP-like exception with status code |
+| `session()`            | Read, write, or access session store          |
+| `dump()` / `dd()`      | Debugging utilities (print and exit)          |
 
 ## 🚀 Usage
 

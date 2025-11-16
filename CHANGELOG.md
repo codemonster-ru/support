@@ -2,6 +2,18 @@
 
 All significant changes to this project will be documented in this file.
 
+## [1.1.0] – 2025-11-16
+
+### Added
+
+-   New `abort()` helper for throwing HTTP-like exceptions with a status code.
+-   Introduced `HttpStatusExceptionInterface` extending `Throwable` for consistent type support.
+-   Added test coverage for `abort()` including status code and message handling.
+
+### Updated
+
+-   Documentation: added `abort()` to the list of provided helpers.
+
 ## [1.0.0] – 2025-10-28
 
 ### Added
