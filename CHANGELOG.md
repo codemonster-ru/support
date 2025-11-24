@@ -2,6 +2,15 @@
 
 All significant changes to this project will be documented in this file.
 
+## [1.2.0] – 2025-11-24
+
+### Added
+
+-   Added unit tests for the global `db()` helper, including verification of passing a connection name and returning a `Connection` instance.
+-   Added the `FakeConnection` and `FakeDatabaseManager` classes to tests to isolate behavior and enable stable testing without a real database.
+-   Added the `reset()` method to `SupportFakeContainer` to clean up the container between tests.
+-   Improved testing infrastructure: tests are now fully isolated and independent of the Annabel framework.
+
 ## [1.1.0] – 2025-11-16
 
 ### Added

@@ -35,4 +35,9 @@ class SupportFakeContainer
 
         throw new \RuntimeException("Binding [$abstract] not found in fake container.");
     }
+
+    public function reset(): void
+    {
+        $this->bindings = [];
+    }
 }
