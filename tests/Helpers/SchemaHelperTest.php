@@ -1,12 +1,12 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
+use Codemonster\Database\Schema\Schema;
 use Codemonster\Database\DatabaseManager;
-use Codemonster\Database\Contracts\ConnectionInterface;
 
-class DbHelperTest extends TestCase
+class SchemaHelperTest extends TestCase
 {
-    public function test_db_returns_connection()
+    public function test_schema_returns_schema_builder()
     {
         $manager = new DatabaseManager([
             'default' => 'fake',
@@ -21,8 +21,8 @@ class DbHelperTest extends TestCase
         app()->instance(DatabaseManager::class, $manager);
 
         $this->assertInstanceOf(
-            ConnectionInterface::class,
-            db()
+            Schema::class,
+            schema()
         );
     }
 }

@@ -15,57 +15,72 @@ composer require codemonster-ru/support
 
 ## 🧩 Provided Helpers
 
-| Function               | Description                                   |
-| ---------------------- | --------------------------------------------- |
-| `config()`             | Get or set configuration values               |
-| `env()`                | Read environment variables                    |
-| `view()` / `render()`  | Render or return a view instance              |
-| `router()` / `route()` | Access router instance                        |
-| `request()`            | Get the current HTTP request                  |
-| `response()`           | Create a new HTTP response                    |
-| `json()`               | Return a JSON response                        |
-| `abort()`              | Throw an HTTP-like exception with status code |
-| `session()`            | Read, write, or access session store          |
-| `dump()` / `dd()`      | Debugging utilities (print and exit)          |
+| Function               | Description                                  |
+| ---------------------- | -------------------------------------------- |
+| `config()`             | Get or set configuration values              |
+| `env()`                | Read environment variables                   |
+| `view()` / `render()`  | Render or return a view instance             |
+| `router()` / `route()` | Access router instance                       |
+| `request()`            | Get the current HTTP request                 |
+| `response()`           | Create a new HTTP response                   |
+| `json()`               | Return a JSON response                       |
+| `abort()`              | Throw an HTTP-like exception                 |
+| `session()`            | Read or write session data                   |
+| `db()`                 | Get a database connection (if installed)     |
+| `schema()`             | Schema builder (if database package present) |
+| `transaction()`        | Run a DB transaction                         |
+| `dump()` / `dd()`      | Debugging utilities                          |
+
+> These helpers are framework‑agnostic and automatically enabled when installed.
 
 ## 🚀 Usage
-
-All helpers are automatically registered via Composer’s autoloading.
-You can call them from anywhere in your application.
 
 ```php
 <?php
 
 require __DIR__ . '/vendor/autoload.php';
 
-// Environment variables
-$value = env('APP_ENV', 'production');
+// ENV
+$env = env('APP_ENV', 'production');
 
-// Configuration
+// Config
 config(['app.name' => 'Codemonster']);
+echo config('app.name');
 
-echo config('app.name'); // Codemonster
-
-// HTTP request and response
+// Requests & Responses
 $request = request();
-$response = response('Hello World', 200);
-$response->send();
+return response('Hello World', 200);
 
 // Router
 router()->get('/', fn() => response('Home'));
-router()->post('/contact', fn() => response('Contact form submitted'));
 
-// View rendering
+// Views
 echo render('emails.welcome', ['user' => 'Vasya']);
 
-// Debugging
+// Debug
 dump($request);
-dd('Goodbye');
+dd('Bye!');
+```
+
+## 🗄 Database Helpers (optional)
+
+If `codemonster-ru/database` is installed:
+
+```php
+$conn = db();         // default connection
+$conn = db('mysql');  // named connection
+
+schema()->create('users', function ($table) {
+    $table->id();
+    $table->string('name');
+});
+
+transaction(function ($db) {
+    $db->table('logs')->insert(['msg' => 'ok']);
+});
 ```
 
 ## 🧪 Testing
-
-You can run tests with the command:
 
 ```bash
 composer test

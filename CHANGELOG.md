@@ -2,6 +2,36 @@
 
 All significant changes to this project will be documented in this file.
 
+## [1.3.0] – 2025-12-09
+
+### Added
+
+-   **Global database helpers** integrating the `codemonster-ru/database` package:
+    -   `db()` — returns the active database connection
+    -   `schema()` — returns schema builder for the selected connection
+    -   `transaction()` — executes callbacks inside a DB transaction
+-   Full PHPUnit test coverage for:
+    -   `db()` helper
+    -   `schema()` helper
+    -   With isolated `DatabaseManager` and fake container bindings
+-   Support for SQLite, MySQL and future drivers automatically via `ConnectionInterface::schema()`.
+
+### Changed
+
+-   `SupportFakeContainer` updated for correct behavior with database helpers:
+    -   `singleton()` is now **eager**, ensuring immediate instance creation
+    -   Improved compatibility with Annabel-style lazy container contracts
+    -   Fully stable integration with request/view/db helpers
+-   Strengthened test isolation:
+    -   `reset()` now clears both bindings and instances
+    -   All tests run without requiring the Annabel framework
+
+### Fixed
+
+-   `schema()` test failing due to instantiation of an abstract Grammar class  
+    → Now resolved automatically by the database package selecting proper driver grammar.
+-   DB helper now correctly bootstraps connection configuration even without other framework components.
+
 ## [1.2.0] – 2025-11-24
 
 ### Added
