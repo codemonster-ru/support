@@ -2,6 +2,13 @@
 
 All significant changes to this project will be documented in this file.
 
+## [1.4.0] - 2026-01-02
+
+### Changed
+
+-   Bumped `codemonster-ru/http` to `^2.0`.
+-   Bumped `codemonster-ru/session` to `^2.0`.
+
 ## [1.3.1] - 2026-01-02
 
 ### Changed
