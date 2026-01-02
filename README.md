@@ -46,6 +46,7 @@ require __DIR__ . '/vendor/autoload.php';
 
 // ENV
 $env = env('APP_ENV', 'production');
+$debug = env('APP_DEBUG', false, true);
 
 // Config
 config(['app.name' => 'Codemonster']);

@@ -3,8 +3,8 @@
 use Codemonster\Env\Env;
 
 if (!function_exists('env')) {
-    function env(string $key, mixed $default = null): mixed
+    function env(string $key, mixed $default = null, bool $cast = false): mixed
     {
-        return Env::get($key, $default);
+        return Env::getCast($key, $default, $cast);
     }
 }

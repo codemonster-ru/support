@@ -2,6 +2,12 @@
 
 All significant changes to this project will be documented in this file.
 
+## [1.4.1] - 2026-01-03
+
+### Changed
+
+-   Added optional `$cast parameter to global `env()`helper to enable typed casting via`Env::getCast()`.
+
 ## [1.4.0] - 2026-01-02
 
 ### Changed
