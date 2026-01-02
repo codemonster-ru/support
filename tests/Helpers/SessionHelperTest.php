@@ -23,4 +23,11 @@ class SessionHelperTest extends TestCase
 
         $this->assertSame('Vasya', session('user'));
     }
+
+    public function testSessionCanStoreNullValue()
+    {
+        session('nullable', null);
+
+        $this->assertNull(session('nullable'));
+    }
 }

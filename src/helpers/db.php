@@ -7,26 +7,32 @@ use Codemonster\Database\Schema\Schema;
 /**
  * Get a database connection.
  */
-function db(?string $connection = null): ConnectionInterface
-{
-    /** @var DatabaseManager $manager */
-    $manager = app(DatabaseManager::class);
+if (!function_exists('db')) {
+    function db(?string $connection = null): ConnectionInterface
+    {
+        /** @var DatabaseManager $manager */
+        $manager = app(DatabaseManager::class);
 
-    return $manager->connection($connection);
+        return $manager->connection($connection);
+    }
 }
 
 /**
  * Get schema builder.
  */
-function schema(?string $connection = null): Schema
-{
-    return db($connection)->schema();
+if (!function_exists('schema')) {
+    function schema(?string $connection = null): Schema
+    {
+        return db($connection)->schema();
+    }
 }
 
 /**
  * Run transaction.
  */
-function transaction(callable $callback, ?string $connection = null): mixed
-{
-    return db($connection)->transaction($callback);
+if (!function_exists('transaction')) {
+    function transaction(callable $callback, ?string $connection = null): mixed
+    {
+        return db($connection)->transaction($callback);
+    }
 }

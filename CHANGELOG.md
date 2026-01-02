@@ -2,14 +2,32 @@
 
 All significant changes to this project will be documented in this file.
 
-## [1.3.0] – 2025-12-09
+## [1.3.1] - 2026-01-02
+
+### Changed
+
+-   Guarded database helpers against redeclaration.
+-   `json()` helper now uses the container response instance for consistency.
+-   Added explicit return types to `abort()` and `dump()` helpers.
+-   Bumped `codemonster-ru/database` to `^2.0`.
+-   Session helper now distinguishes between "get" and "set" by argument count.
+-   `dd()` now exits with status code 0.
+-   Updated package metadata to reflect Annabel usage.
+
+### Fixed
+
+-   Cleaned up changelog encoding artifacts and restored ASCII formatting.
+-   Suppressed debug output in `DumpHelperTest`.
+-   Added test coverage for null session values and empty/zero request inputs.
+
+## [1.3.0] - 2025-12-09
 
 ### Added
 
 -   **Global database helpers** integrating the `codemonster-ru/database` package:
-    -   `db()` — returns the active database connection
-    -   `schema()` — returns schema builder for the selected connection
-    -   `transaction()` — executes callbacks inside a DB transaction
+    -   `db()` - returns the active database connection
+    -   `schema()` - returns schema builder for the selected connection
+    -   `transaction()` - executes callbacks inside a DB transaction
 -   Full PHPUnit test coverage for:
     -   `db()` helper
     -   `schema()` helper
@@ -28,11 +46,11 @@ All significant changes to this project will be documented in this file.
 
 ### Fixed
 
--   `schema()` test failing due to instantiation of an abstract Grammar class  
-    → Now resolved automatically by the database package selecting proper driver grammar.
+-   `schema()` test failing due to instantiation of an abstract Grammar class.
+    Now resolved automatically by the database package selecting proper driver grammar.
 -   DB helper now correctly bootstraps connection configuration even without other framework components.
 
-## [1.2.0] – 2025-11-24
+## [1.2.0] - 2025-11-24
 
 ### Added
 
@@ -41,7 +59,7 @@ All significant changes to this project will be documented in this file.
 -   Added the `reset()` method to `SupportFakeContainer` to clean up the container between tests.
 -   Improved testing infrastructure: tests are now fully isolated and independent of the Annabel framework.
 
-## [1.1.0] – 2025-11-16
+## [1.1.0] - 2025-11-16
 
 ### Added
 
@@ -53,20 +71,20 @@ All significant changes to this project will be documented in this file.
 
 -   Documentation: added `abort()` to the list of provided helpers.
 
-## [1.0.0] – 2025-10-28
+## [1.0.0] - 2025-10-28
 
 ### Added
 
 -   Global helper functions for the entire **Codemonster PHP ecosystem**:
-    -   `config()` — access or modify configuration values
-    -   `env()` — read environment variables
-    -   `dump()`, `dd()` — elegant variable dumping
-    -   `request()` — get current HTTP request or input
-    -   `response()`, `json()` — send structured responses
-    -   `router()` / `route()` — define and access routes
-    -   `session()` — read or write session data
-    -   `view()` / `render()` — render templates and return responses
+    -   `config()` - access or modify configuration values
+    -   `env()` - read environment variables
+    -   `dump()`, `dd()` - elegant variable dumping
+    -   `request()` - get current HTTP request or input
+    -   `response()`, `json()` - send structured responses
+    -   `router()` / `route()` - define and access routes
+    -   `session()` - read or write session data
+    -   `view()` / `render()` - render templates and return responses
 -   Seamless integration with the **Annabel** framework via `app()` container
 -   Standalone compatibility when Annabel is not installed
 -   Full PHPUnit test coverage for all helpers (18 tests / 25 assertions)
--   Support for **PHP 8.2 – 8.4** and PHPUnit **9–12**
+-   Support for **PHP 8.2 - 8.4** and PHPUnit **9-12**

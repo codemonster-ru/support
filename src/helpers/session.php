@@ -9,7 +9,7 @@ if (!function_exists('session')) {
             return $session;
         }
 
-        if ($value === null) {
+        if (func_num_args() === 1) {
             return $session->get($key);
         }
 

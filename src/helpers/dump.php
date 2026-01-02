@@ -3,7 +3,7 @@
 use Codemonster\Dumper\Dumper;
 
 if (!function_exists('dump')) {
-    function dump(...$vars)
+    function dump(...$vars): mixed
     {
         foreach ($vars as $var) {
             Dumper::dump($var);
@@ -18,6 +18,6 @@ if (!function_exists('dd')) {
     {
         dump(...$vars);
 
-        exit(1);
+        exit(0);
     }
 }

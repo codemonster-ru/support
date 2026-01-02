@@ -5,15 +5,18 @@
 [![License](https://img.shields.io/packagist/l/codemonster-ru/support.svg?style=flat-square)](https://packagist.org/packages/codemonster-ru/support)
 [![Tests](https://github.com/codemonster-ru/support/actions/workflows/tests.yml/badge.svg)](https://github.com/codemonster-ru/support/actions/workflows/tests.yml)
 
-Global helper functions for the **Codemonster PHP ecosystem**.
+Global helper functions and meta package for `codemonster-ru/annabel`.
 
-## 📦 Installation
+This package aggregates core Codemonster packages and provides global helpers
+for the Annabel framework. Helpers rely on `app()` and the Annabel container.
+
+## Installation
 
 ```bash
 composer require codemonster-ru/support
 ```
 
-## 🧩 Provided Helpers
+## Provided Helpers
 
 | Function               | Description                                  |
 | ---------------------- | -------------------------------------------- |
@@ -26,14 +29,15 @@ composer require codemonster-ru/support
 | `json()`               | Return a JSON response                       |
 | `abort()`              | Throw an HTTP-like exception                 |
 | `session()`            | Read or write session data                   |
-| `db()`                 | Get a database connection (if installed)     |
-| `schema()`             | Schema builder (if database package present) |
+| `db()`                 | Get a database connection                    |
+| `schema()`             | Schema builder                               |
 | `transaction()`        | Run a DB transaction                         |
 | `dump()` / `dd()`      | Debugging utilities                          |
 
-> These helpers are framework‑agnostic and automatically enabled when installed.
+These helpers are intended for `codemonster-ru/annabel` and rely on its
+container (`app()`).
 
-## 🚀 Usage
+## Usage
 
 ```php
 <?php
@@ -62,9 +66,7 @@ dump($request);
 dd('Bye!');
 ```
 
-## 🗄 Database Helpers (optional)
-
-If `codemonster-ru/database` is installed:
+## Database Helpers
 
 ```php
 $conn = db();         // default connection
@@ -80,16 +82,16 @@ transaction(function ($db) {
 });
 ```
 
-## 🧪 Testing
+## Testing
 
 ```bash
 composer test
 ```
 
-## 👨‍💻 Author
+## Author
 
 [**Kirill Kolesnikov**](https://github.com/KolesnikovKirill)
 
-## 📜 License
+## License
 
 [MIT](https://github.com/codemonster-ru/support/blob/main/LICENSE)

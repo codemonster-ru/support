@@ -25,4 +25,15 @@ class RequestHelperTest extends TestCase
 
         $this->assertSame('value', request('key'));
     }
+
+    public function testRequestReturnsEmptyAndZeroValues()
+    {
+        $_GET['empty'] = '';
+        $_GET['zero'] = '0';
+
+        app()->singleton('request', fn() => \Codemonster\Http\Request::capture());
+
+        $this->assertSame('', request('empty'));
+        $this->assertSame('0', request('zero'));
+    }
 }
